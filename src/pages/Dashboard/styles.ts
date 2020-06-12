@@ -82,7 +82,8 @@ export const Repositories = styled.div`
     }
 
     div {
-      margin-left: 16px; /* Margem esquerda */
+      margin: 0 16px; /* Margens sup. e inf. 0; Margens laterais 16px */
+      flex: 1; /* A div se ajustará ao tamanho disponível */
 
       strong {
         font-size: 20px; /* Tamanho da fonte */
