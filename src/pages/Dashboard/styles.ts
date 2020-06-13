@@ -1,5 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
+
+interface FormProps {
+  hasError: boolean;
+}
 
 export const Title = styled.h1`
   font-size: 48px; /* Tamanho da fonte */
@@ -11,7 +15,7 @@ export const Title = styled.h1`
   margin-top: 80px; /* Margem superior */
 `;
 
-export const Form = styled.form`
+export const Form = styled.form<FormProps>`
   margin-top: 40px; /* Margem superior */
   max-width: 700px; /* Largura máxima do formulário */
 
@@ -23,9 +27,17 @@ export const Form = styled.form`
     flex: 1; /* Essa propriedade fará com que o input ocupe todo o form, mas se adaptando de acordo com os elementos que estão ao lado */
     height: 70px; /* Altura do input */
     padding: 0 24px; /* Espaçamento interno do input; 0 superior e inferior, 24 nas laterais */
-    border: 0; /* Sem bordas */
+    border: 2px solid #fff; /* Cor inicial de borda branca, para que não seja perceptível. Isso será usado para informar erro ao usuário, trocando a cor da borda através da propriedade 'hasError' criada no código */
+    border-right: 0; /* Tiramos a borda do lado direito */
     border-radius: 5px 0 0 5px; /* Curvatura das bordas somente no lado esquerdo */
     color: #3a3a3a; /* Cor da fonte */
+
+    /* Se nas propriedades do elemento houver um hasError, trocamos a cor do input */
+    ${(props) =>
+      props.hasError &&
+      css`
+        border-color: #c53030;
+      `}
 
     /* Placeholder um pouco mais claro */
     &::placeholder {
@@ -48,6 +60,12 @@ export const Form = styled.form`
       background: ${shade(0.2, '#04d361')};
     }
   }
+`;
+
+export const Error = styled.span`
+  display: block;
+  color: #c53030;
+  margin-top: 8px;
 `;
 
 export const Repositories = styled.div`
