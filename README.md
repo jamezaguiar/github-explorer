@@ -2,6 +2,8 @@
 
 Esta aplicação feita com ReactJS, utiliza a [API do Github](https://api.github.com) para exibir informações sobre repositórios.
 
+![Aplicação funcionando](images/githubexplorer.gif)
+
 ## Tecnologias utilizadas
 
 - [Typescript](https://www.typescriptlang.org/)
